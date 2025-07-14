@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elizandro Costa - Junior Game Designer</title>
+    
+    <!-- Google Fonts for a more modern/gamer look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Global Settings and Variables --- */
+        :root {
+            --cor-fundo: #121212;
+            --cor-fundo-secundario: #1e1e1e;
+            --cor-texto-principal: #e0e0e0;
+            --cor-texto-secundario: #a0a0a0;
+            --cor-destaque: #00bcd4; /* A vibrant cyan */
+            --cor-destaque-hover: #00e5ff;
+        }
+
+        /* --- Reset and Base Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto-principal);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Press Start 2P', cursive;
+            color: var(--cor-destaque);
+            margin-bottom: 20px;
+        }
+        
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; text-align: center; margin-bottom: 50px; }
+        h3 { font-size: 1.5rem; }
+
+        p {
+            color: var(--cor-texto-secundario);
+            margin-bottom: 15px;
+        }
+
+        a {
+            color: var(--cor-destaque);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--cor-destaque-hover);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--cor-destaque);
+            color: var(--cor-fundo);
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--cor-destaque-hover);
+            transform: translateY(-3px);
+            color: var(--cor-fundo);
+        }
+
+        /* --- Header / Navigation --- */
+        header {
+            background: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #2a2a2a;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1.2rem;
+            color: #fff;
+        }
+        
+        .logo span { color: var(--cor-destaque); }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            color: var(--cor-texto-principal);
+        }
+
+        /* --- Hero Section --- */
+        #hero {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        #hero .subtitle {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            color: var(--cor-texto-secundario);
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+        
+        #hero .hero-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--cor-destaque);
+            margin-bottom: 30px;
+        }
+
+        /* --- Projects Section --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: var(--cor-fundo-secundario);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 188, 212, 0.2);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+        
+        .project-content h3 {
+            font-size: 1.2rem;
+            color: #fff;
+        }
+
+        .project-tags {
+            margin-top: 15px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #333;
+            color: var(--cor-destaque);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+        /* --- About Me and Skills Section --- */
+        .about-content {
+            display: flex;
+            gap: 50px;
+            align-items: flex-start;
+        }
+
+        .about-text {
+            flex: 2;
+        }
+
+        .skills-list {
+            flex: 1;
+            background: var(--cor-fundo-secundario);
+            padding: 25px;
+            border-radius: 8px;
+        }
+        
+        .skills-list h3 {
+            margin-bottom: 15px;
+            color: #fff;
+            font-size: 1.2rem;
+        }
+        
+        .skills-list ul {
+            list-style: none;
+        }
+        
+        .skills-list li {
+            color: var(--cor-texto-secundario);
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .skills-list li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: var(--cor-destaque);
+            font-family: 'Press Start 2P';
+        }
+
+        /* --- Contact Section --- */
+        #contact {
+            text-align: center;
+        }
+
+        .contact-links {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 1px solid #2a2a2a;
+            color: var(--cor-texto-secundario);
+        }
+
+        /* --- Responsiveness --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+
+            .navbar { flex-direction: column; gap: 15px; }
+            .nav-links { gap: 20px; }
+
+            .about-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- =======================
+         HEADER AND NAVIGATION
+    ======================== -->
+    <header>
+        <div class="navbar">
+            <a href="#hero" class="logo">Elizandro<span>.</span>gamedesign</a>
+            <ul class="nav-links">
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <!-- =======================
+             HERO SECTION
+        ======================== -->
+        <section id="hero">
+            <img src="https://media.licdn.com/dms/image/v2/D4D03AQFFACSqtnki_w/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1693873120818?e=1758153600&v=beta&t=zQoaCfHj748v2oWme9IC9hLiZiNdc9d8FgUguES54Qs" alt="Profile picture" class="hero-image">
+            <h1>Elizandro Costa</h1>
+            <p class="subtitle">Junior Game Designer passionate about creating captivating worlds, systems, and mechanics that provide memorable experiences.</p>
+            <a href="#projects" class="btn">See my projects</a>
+        </section>
+
+        <!-- =======================
+             PROJECTS SECTION
+        ======================== -->
+        <section id="projects" class="container">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+
+                <!-- PROJECT 1 (Example: University Project) -->
+                <div class="project-card">
+                    <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3008640/header.jpg?t=1731434166" alt="Onikura Game Image" class="project-image">
+                    <div class="project-content">
+                        <h3>Onikura</h3>
+                        <p>Onikura is a 2D Boss-Rush platformer game, focused on giving the player the freedom to play and progress in their own style, offering various options to upgrade their character and unique abilities that completely change their playstyle. With unique scenarios and soundtracks, the game offers challenging combat and boss fights that will stay with you forever.</p>
+                        <p><strong>My contribution:</strong> I was responsible for the level design of the 3 main levels, the design and balancing of player mechanics, and the creation of the GDD (Game Design Document).</p>
+                        <div class="project-tags">
+                            <span class="tag">Unity</span>
+                            <span class="tag">C#</span>
+                            <span class="tag">Level Design</span>
+                            <span class="tag">GDD</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROJECT 2 (Example: Game Jam) -->
+                <div class="project-card">
+                    <img src="https://i.pinimg.com/736x/b7/bf/e0/b7bfe0a716e8b060fc05aa83aa7f6933.jpg" alt="Gem Fusion Puzzle Game Image" class="project-image">
+                    <div class="project-content">
+                        <h3>Gem Fusion Puzzle</h3>
+                        <p>A prototype of a match-3 game developed on the Upit.AI platform as a sample for mobile games using AI.</p>
+                        <p><strong>My contribution:</strong> I developed the initial concept, the game system design, and created the prototype of the main gameplay loop (matching identical pieces and reaching the maximum score without losing all the stars).</p>
+                        <div class="project-tags">
+                            <span class="tag">Upit.AI</span>
+                            <span class="tag">Rapid Prototyping</span>
+                            <span class="tag">System Design</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- PROJECT 3 (Example: Personal Study) -->
+                <div class="project-card">
+                    <img src="https://i.pinimg.com/736x/46/62/90/466290e0bce5e92da8cef4113d42a8a2.jpg" alt="Image of a level design study" class="project-image">
+                    <div class="project-content">
+                        <h3>Casual Hybrid Game Design Study</h3>
+                        <p>A personal project focused on analyzing casual hybrid games and the "match-3 + meta-progression" level design of Royal Match!, using Unity for prototyping.</p>
+                        <p><strong>My contribution:</strong> Player flow analysis, Higher Retention than hyper-casual (players stay longer), Better Monetization than pure hyper-casual (IAP + ads), and documentation of my design conclusions.</p>
+                        <div class="project-tags">
+                            <span class="tag">Unity Engine</span>
+                            <span class="tag">Level Design</span>
+                            <span class="tag">Analysis</span>
+                            <span class="tag">Rapid Prototyping</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        
+        <!-- =======================
+             ABOUT ME SECTION
+        ======================== -->
+        <section id="about" class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Hello! I'm a motivated and creative Game Designer.</h3>
+                    <p>Since childhood, video games have been my greatest passion. Not just playing them, but taking them apart in my head to understand how they work: why is a mechanic fun? What makes a level memorable? What makes a story resonate with the player?</p>
+                    <p>This curiosity led me to study Game Design, where I could turn my passion into a skill. I love working in a team, solving complex problems, and rapidly prototyping ideas to see if they are fun in practice.</p>
+                    <p>I am always learning new tools and studying industry trends. Right now, I am looking for an opportunity as a Junior Game Designer to contribute with my energy and creativity, and to grow professionally in a stimulating environment.</p>
+                </div>
+                <div class="skills-list">
+                    <h3>Skills</h3>
+                    <ul>
+                        <li><strong>Engines:</strong> Unity, GameMaker, Godot</li>
+                        <li><strong>Languages:</strong> C# (Intermediate)</li>
+                        <li><strong>Design:</strong> Level Design, System Design, Narrative Design, GDDs</li>
+                        <li><strong>Tools:</strong> Figma, ClickUp, Jira, Git, Perforce</li>
+                        <li><strong>Spoken Languages:</strong> Portuguese (Native), English (B2)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- =======================
+             CONTACT SECTION
+        ======================== -->
+        <section id="contact" class="container">
+            <h2>Let's Create Together!</h2>
+            <p>I'm looking for my first opportunity in the industry. If you find my work interesting, I would love to chat.</p>
+            <div class="contact-links">
+                <a href="mailto:elizandropy85@gmail.com" class="btn">Send Email</a>
+                <a href="path/to/your_cv.pdf" class="btn" download>Download CV</a>
+                <a href="https://www.linkedin.com/in/elizandro-costa-1a66b1173" class="btn" target="_blank">LinkedIn</a>
+                <a href="https://daaay_traycosta.itch.io/" class="btn" target="_blank">Itch.io</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- =======================
+              FOOTER
+    ======================== -->
+    <footer>
+        <p>© 2024 - Created by ElizandroCosta.</p>
+    </footer>
+
+</body>
+</html>
